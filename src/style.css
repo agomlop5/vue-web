@@ -4,9 +4,15 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
-/* Tailwind CSS v4 directives; supported by Tailwind even if CSS linters flag them. */
-/* stylelint-disable at-rule-no-unknown */
-/* csslint ignore:start */
+body {
+  font-family: "Lexend", sans-serif;
+}
+
+@font-face {
+  font-family: Batman;
+  src: url(../fonts/batmfo__.ttf);
+}
+
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
@@ -47,8 +53,6 @@
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
 }
-/* csslint ignore:end */
-/* stylelint-enable at-rule-no-unknown */
 
 :root {
   --radius: 0.625rem;
