@@ -4,6 +4,9 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
+/* Tailwind CSS v4 directives; supported by Tailwind even if CSS linters flag them. */
+/* stylelint-disable at-rule-no-unknown */
+/* csslint ignore:start */
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
@@ -44,6 +47,8 @@
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
 }
+/* csslint ignore:end */
+/* stylelint-enable at-rule-no-unknown */
 
 :root {
   --radius: 0.625rem;
@@ -116,9 +121,11 @@
 
 @layer base {
   * {
-    @apply border-border outline-ring/50;
+    border-color: var(--border);
+    outline-color: color-mix(in oklab, var(--ring) 50%, transparent);
   }
   body {
-    @apply bg-background text-foreground;
+    background-color: var(--background);
+    color: var(--foreground);
   }
 }
