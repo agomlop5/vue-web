@@ -1,8 +1,7 @@
-
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
-
 @import "tailwindcss";
 @import "tw-animate-css";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
 
 body {
   font-family: "Lexend", sans-serif;
@@ -13,7 +12,7 @@ body {
   src: url(../fonts/batmfo__.ttf);
 }
 
-@custom-variant dark (&:is(.dark *));
+@custom-variant dark (&:where(.dark, .dark *));
 
 @theme inline {
   --font-heading: var(--font-sans);
@@ -52,6 +51,18 @@ body {
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
+
+  /* Brand colors */
+  --color-simpsons-yellow: #ffde00;
+  --color-simpsons-red: #ee3133;
+  --color-domus-cyan: #18bcf6;
+  --color-domus-navy: #151934;
+  --color-domus-navy-input: #1f233e;
+  --color-brand-purple: #6a5acd;
+  --color-brand-purple-dark: #584bab;
+
+  /* Layout */
+  --container-page: 1400px;
 }
 
 :root {

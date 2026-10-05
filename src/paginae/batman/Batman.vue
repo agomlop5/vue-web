@@ -10,45 +10,60 @@ import {
   navigationMenuTriggerStyle,
 } from '@/components/ui/navigation-menu'
 
+const scrollToSection = (sectionId: string) => {
+  if (sectionId === "#") {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  return
+  }
+
+  const element = document.querySelector<HTMLElement>(sectionId);
+
+    if (element){
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+    }
+
+};
+
 </script>
 
 <template>
 
   <div class="batman">
-      <nav class="extra-nav">
+      <nav class="extra-nav flex flex-col sm:flex-row justify-between px-3 ">
         <RouterLink to="/">
           <House class="icon-home" />
         </RouterLink>
 
         <NavigationMenu>
-            <NavigationMenuList>
+            <NavigationMenuList class="flex flex-col sm:flex-row">
               <NavigationMenuItem>
-                <a href="#" @click.prevent="">
-                  <NavigationMenuLink :class="navigationMenuTriggerStyle()">
+                <a href="#" @click.prevent="scrollToSection('#')">
+                  <NavigationMenuLink :class="[navigationMenuTriggerStyle(), 'text-md hover:bg-brand-purple hover:text-white transition-colors']">
                         Portada
                   </NavigationMenuLink>
                 </a>
               </NavigationMenuItem>
             
             <NavigationMenuItem>
-                <a href="#" @click.prevent="">
-                  <NavigationMenuLink :class="navigationMenuTriggerStyle()">
-                                  Vehículos
+                <a href="#vehiculis" @click.prevent="scrollToSection('#vehiculis')">
+                  <NavigationMenuLink :class="[navigationMenuTriggerStyle(), 'text-md hover:bg-brand-purple hover:text-white transition-colors']">
+                        Vehículos
                   </NavigationMenuLink>
                 </a>
             </NavigationMenuItem>
 
               <NavigationMenuItem>
-                <a href="#" @click.prevent="">
-                  <NavigationMenuLink :class="navigationMenuTriggerStyle()">
+                <a href="#imagenes" @click.prevent="scrollToSection('#imagenes')">
+                  <NavigationMenuLink :class="[navigationMenuTriggerStyle(), 'text-md hover:bg-brand-purple hover:text-white transition-colors']">
                                   Imágenes
                   </NavigationMenuLink>
                 </a>
 
             </NavigationMenuItem>
               <NavigationMenuItem>
-                <a href="#" @click.prevent="">
-                <NavigationMenuLink :class="navigationMenuTriggerStyle()">
+                <a href="#contacto" @click.prevent="scrollToSection('#contacto')">
+                <NavigationMenuLink :class="[navigationMenuTriggerStyle(), 'text-md hover:bg-brand-purple hover:text-white transition-colors']">
                                 Contacto
                 </NavigationMenuLink>
                 </a>
