@@ -18,7 +18,7 @@ import Button from '@/components/ui/button/Button.vue';
             <RouterLink to="/indecision">Sí o no </RouterLink>
             </Button>
 
-            <Button>
+            <Button variant="domus" class="mr-2">
             <RouterLink to="/batman">Batman</RouterLink>
             </Button>
 
