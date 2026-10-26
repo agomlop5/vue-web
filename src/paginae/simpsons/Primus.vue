@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 <template>
   <div class="bg-simpsons-yellow min-h-screen text-center p-4 flex flex-col items-center justify-center">
     
-    <LogoSimpsons estilus="w-[24rem] sm:w-[35rem]"/>
+    <LogoSimpsons estilus="w-[18rem] md:w-[28rem] lg:w-[35rem] xl:w-[45rem] transition-all "/>
 
     <h1 class="text-xl my-1 font-medium">
       Discover some of the most amazing Quotes from The Simpsons
