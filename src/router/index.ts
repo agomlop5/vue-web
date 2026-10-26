@@ -1,8 +1,8 @@
 import { createRouter, createWebHashHistory } from "vue-router";
 import Domus from "../paginae/domus/Domus.vue";
 import Batman from "../paginae/batman/Batman.vue";
-import Simpsons from "../paginae/simpsons/Simpsons.vue";
 import Responsum from "../paginae/responsum/Responsum.vue";
+import Primus from "@/paginae/simpsons/Primus.vue";
 
 export const router = createRouter({
     history: createWebHashHistory(import.meta.env.BASE_URL),
@@ -20,7 +20,7 @@ export const router = createRouter({
         },
         {   path: "/simpsons",
             name: 'simpsons',
-            component: Simpsons
+            component: Primus
         },
         {
             path: "/indecision",
