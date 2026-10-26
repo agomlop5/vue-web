@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import LogoSimpsons from "@/components/logoSimpsons.vue";
+import LogoSimpsons from "@/components/LogoSimpsons.vue";
 import { Button } from "@/components/ui/button";
 
 </script>
@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 <template>
   <div class="bg-simpsons-yellow min-h-screen text-center p-4 flex flex-col items-center justify-center">
     
-    <LogoSimpsons estilus="w-[24rem] bg-red-500"/>
+    <LogoSimpsons estilus="w-[24rem] sm:w-[35rem]"/>
 
     <h1 class="text-xl my-1 font-medium">
       Discover some of the most amazing Quotes from The Simpsons
