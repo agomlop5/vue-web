@@ -24,40 +24,40 @@ export const router = createRouter({
         },
         {   path: "/simpsons",
             children: [
-                {
-                    path:"",
-                    name:"Simpsons",
-                    component: Primus
-                },
-                {
-                    path:"about",
-                    component: Layout,
-                    children: [
-                        {
-                            path: "",
-                            name:"simpson-about",
-                            component: Circa
-                        }
-                    ]
-                },
-                {
-                    path:"gallery",
-                    component: Layout,
-                    children: [
-                        {
-                            path: "",
-                            name:"simpson-gallery",
-                            component: Collectione
-                        },
-                        {
-                            path: ":id",
-                            name: "simpson-detail",
-                            component: Character
-                        }
-                    ]
-                }
-            ],    
-        },
+                    {
+                        path:"",
+                        name:"Simpsons",
+                        component: Primus
+                    },
+                    {
+                        path:"about",
+                        component: Layout,
+                        children: [
+                            {
+                                path: "",
+                                name:"simpson-about",
+                                component: Circa
+                            }
+                        ]
+                    },
+                    {
+                        path:"gallery",
+                        component: Layout,
+                        children: [
+                            {
+                                path: "",
+                                name:"simpson-gallery",
+                                component: Collectione
+                            },
+                            {
+                                path: ":id",
+                                name: "simpson-detail",
+                                component: Character
+                            }
+                        ]
+                    }
+                ],    
+            },
         {
             path: "/indecision",
             name: 'indecision',

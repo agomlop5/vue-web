@@ -23,7 +23,7 @@ import { Button } from "@/components/ui/button";
       </Button>
 
       <Button variant="tertiarius" size="elongatis">
-        <RouterLink to="">Enter</RouterLink>
+        <RouterLink to="/simpsons/about">Enter</RouterLink>
       </Button>
     </div>
     
