@@ -19,12 +19,14 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from '@/components/ui/popover'
+import { useFavoritosStore } from '@/stores/useFavoritos';
+import {Heart} from "@lucide/vue";
 
 
 const route = useRoute()
-
 const router = useRouter()
 
+const {esFavorito, toggleFavorito} = useFavoritosStore()
 
 const character = ref <Character | undefined>(
     characters.find(char=> char.id === Number(route.params.id))
@@ -63,51 +65,72 @@ const selectedLabel = computed(() => {
 
 <template>
    <div v-if="character" class="w-full max-w-page md:mx-auto my-8 px-5 md:px-20 ">
-    <div class="mb-8">
+    
+    <div class=" flex mb-8 flex-col md:flex-row md:justify-between md:items-center gap-4 ">
+        <div>
 
-        <label class="block text-slg font-semibold mb-2 text-gray-800 ">Buscar personaje:</label>
+            <label class="block text-slg font-semibold mb-2 text-gray-800 ">Buscar personaje:</label>
 
-        <Popover v-model:open="open">
-                <PopoverTrigger as-child>
-                    <Button
-                        variant="outline"
-                        role="combobox"
-                        :aria-expanded="open"
-                        class="w-[200px] justify-between bg-simpsons-red hover:bg-simpsons-yellow text-white border-2 border-black font-semibold shadow-md"
-                    >
-                        {{ selectedLabel }}
-                        <ChevronsUpDownIcon class="ml-2 h-4 w-4 shrink-0 opacity-50" />
-                    </Button>
-                </PopoverTrigger>
-                <PopoverContent class="w-[200px] p-0 border-2 border-black bg-white ">
-                    <Command>
-                        <CommandInput placeholder="Buscar..." class="border-2 border-gray-200 "/>
-                            <CommandList>
-                                <CommandEmpty>No se encontró</CommandEmpty>
-                                <CommandGroup>
-                                    <CommandItem
-                                    v-for="simpson in simpsons"
-                                    :key="simpson.value"
-                                    :value="simpson.value"
-                                    @select="selectCharacter(simpson.value)"
-                                    class="data-[highlighted]:bg-black data-[highlighted]:text-white cursor-pointer"
-                                    >
-                                    <CheckIcon
-                                        :class="cn(
-                                        'mr-2 h-4 w-4',
-                                        value === simpson.value ? 'opacity-100' : 'opacity-0',
-                                        )"
-                                    />
-                                    {{ simpson.label }}
-                                    </CommandItem>
-                                </CommandGroup>
-                        </CommandList>
-                    </Command>
-                </PopoverContent>
-            </Popover>
+            <Popover v-model:open="open">
+                    <PopoverTrigger as-child>
+                        <Button
+                            variant="outline"
+                            role="combobox"
+                            :aria-expanded="open"
+                            class="w-[200px] justify-between bg-simpsons-red hover:bg-simpsons-yellow text-white border-2 border-black font-semibold shadow-md"
+                        >
+                            {{ selectedLabel }}
+                            <ChevronsUpDownIcon class="ml-2 h-4 w-4 shrink-0 opacity-50" />
+                        </Button>
+                    </PopoverTrigger>
+                    <PopoverContent class="w-[200px] p-0 border-2 border-black bg-white ">
+                        <Command>
+                            <CommandInput placeholder="Buscar..." class="border-2 border-gray-200 "/>
+                                <CommandList>
+                                    <CommandEmpty>No se encontró</CommandEmpty>
+                                    <CommandGroup>
+                                        <CommandItem
+                                        v-for="simpson in simpsons"
+                                        :key="simpson.value"
+                                        :value="simpson.value"
+                                        @select="selectCharacter(simpson.value)"
+                                        class="data-[highlighted]:bg-black data-[highlighted]:text-white cursor-pointer"
+                                        >
+                                        <CheckIcon
+                                            :class="cn(
+                                            'mr-2 h-4 w-4',
+                                            value === simpson.value ? 'opacity-100' : 'opacity-0',
+                                            )"
+                                        />
+                                        {{ simpson.label }}
+                                        </CommandItem>
+                                    </CommandGroup>
+                            </CommandList>
+                        </Command>
+                    </PopoverContent>
+                </Popover>
+        </div>
+    
+        <div v-if="character">
+            <Button
+                @click="toggleFavorito(character)"
+                size="lg"
+                :class="[
+                    'w-[200px] border-2 border-black font-semibold transition-all flex justify-start',
+                    esFavorito(character.id) 
+                        ? 'bg-simpsons-red text-white hover:bg-red-700' 
+                        : 'bg-simpsons-yellow text-black hover:bg-simpsons-red hover:text-white'
+                ]"
+            >
+                <!-- fill-current iguala el relleno al color de texto actual, es decir, en este caso, al blanco -->
+                <Heart :class="['w-5 h-5 mr-2', esFavorito(character.id) ? 'fill-current' : '']" />
+                {{ esFavorito(character.id) ? 'En Favoritos' : 'Añadir a Favoritos' }}
+            </Button>
+        </div>
     </div>
-   
-   <div class="flex flex-col lg:flex-row lg:justify-between lg:items.center gap-8">
+    
+
+   <div class="flex flex-col lg:flex-row lg:justify-between lg:items-center gap-8">
         <div>
             <h1 class="titulus-quote"> 
                 {{character.nomen}}

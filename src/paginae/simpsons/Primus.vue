@@ -6,7 +6,6 @@ import {Heart} from "@lucide/vue";
 import { storeToRefs } from "pinia";
 
 const favoritosStore = useFavoritosStore()
-
 const {totalFavoritos} = storeToRefs(favoritosStore)
 
 </script>
