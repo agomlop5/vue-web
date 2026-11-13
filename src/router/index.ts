@@ -7,6 +7,8 @@ import Layout from "@/paginae/simpsons/Layout.vue";
 import Circa from "@/paginae/simpsons/Circa.vue";
 import Collectione from "@/paginae/simpsons/Collectione.vue";
 import Character from "@/paginae/simpsons/Character.vue";
+import Favoritos from "@/paginae/simpsons/Favoritos.vue";
+
 
 export const router = createRouter({
     history: createWebHashHistory(import.meta.env.BASE_URL),
@@ -53,6 +55,17 @@ export const router = createRouter({
                                 path: ":id",
                                 name: "simpson-detail",
                                 component: Character
+                            }
+                        ]
+                    },
+                    {
+                        path:"favoritos",
+                        component: Layout,
+                        children: [
+                            {
+                                path: "",
+                                name:"simpson-favoritos",
+                                component: Favoritos
                             }
                         ]
                     }
